@@ -1,0 +1,239 @@
+{% template head title %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ title }}</title>
+    </head>
+{% endtemplate %}
+
+{% template gv_graph name direction %}
+    digraph {{ name }} {
+    rankdir={{ direction }}
+{% endtemplate %}
+
+{% template gv_end %}
+    }
+{% endtemplate %}
+
+{% template gv_edge tail head %}
+    {{ tail }} -> {{ head }}
+{% endtemplate %}
+
+{% template gv_labeled_edge tail head label %}
+    {{ tail }} -> {{ head }} [label="{{ label }}"]
+{% endtemplate %}
+
+{% template query_tro_str %}
+    {%- query datastore="rdflib", isfilepath=False as query_tro %}
+        SELECT ?tro_creator ?tro_date ?tro_name (STR(?tro) AS ?tro_id) ?tro_descr (COUNT(DISTINCT ?artifact) AS ?num_of_artifacts) (COUNT(DISTINCT ?arrangement) AS ?num_of_arrs) (COUNT(DISTINCT ?trp) AS ?num_of_trps)
+        WHERE {
+            ?tro            rdf:type    trov:TransparentResearchObject .
+            ?tro            <schema:creator>    ?tro_creator .
+            ?tro            <schema:dateCreated>    ?tro_date .
+            ?tro            rdfs:label  ?tro_name .
+            ?tro            rdfs:comment    ?tro_descr .
+            ?tro            trov:hasComposition/trov:hasArtifact   ?artifact .
+            ?tro            trov:hasArrangement     ?arrangement .
+            ?tro            trov:hasPerformance     ?trp .
+        } GROUP BY ?tro
+    {% endquery %}
+    {{ query_tro | df2json }}
+{% endtemplate %}
+
+{% template query_artifacts_by_arrangement_str arrangement %}
+    {%- query datastore="rdflib", isfilepath=False as query_artifacts_by_arrangement %}
+        SELECT DISTINCT ?name (STR(?artifact) AS ?id) ?location
+        WHERE {
+            {{ arrangement }}   trov:hasArtifactLocation   ?locus .
+            ?locus              rdfs:label      ?name .
+            ?locus              trov:hasArtifact    ?artifact .
+            ?locus              trov:hasLocation    ?location .
+        }
+        ORDER BY ?artifact
+    {% endquery %}
+    {{ query_artifacts_by_arrangement | df2json }}
+{% endtemplate %}
+
+{% template query_artifact_str %}
+    {%- query datastore="rdflib", isfilepath=False as query_artifact %}
+        SELECT DISTINCT ?name (STR(?artifact) AS ?id) ?mimeType ?description
+        WHERE {
+            ?tro          rdf:type      trov:TransparentResearchObject .
+            ?tro          trov:hasComposition/trov:hasArtifact   ?artifact .
+            ?artifact     rdfs:label    ?name .
+            ?artifact     trov:mimeType ?mimeType .
+            ?artifact     rdfs:comment  ?description .
+        }
+        ORDER BY ?artifact
+    {% endquery %}
+    {{ query_artifact | df2json }}
+{% endtemplate %}
+
+{% template query_trs_str %}
+    {%- query datastore="rdflib", isfilepath=False as query_trs %}
+        SELECT ?trs_publisher ?trs_name (STR(?trs) AS ?trs_id) ?trs_descr (COUNT(DISTINCT ?capability) AS ?num_of_capabilities)
+        WHERE {
+            ?trs        rdf:type        trov:TransparentResearchSystem .
+            ?trs        trov:hasCapability ?capability .
+            ?trs        <schema:publisher> ?trs_publisher .
+            ?trs        rdfs:label      ?trs_name .
+            ?trs        rdfs:comment    ?trs_descr
+        } GROUP BY ?trs
+    {% endquery %}
+    {{ query_trs | df2json }}
+{% endtemplate %}
+
+{% template query_trs_capability_str %}
+    {%- query datastore="rdflib", isfilepath=False as query_trs_capability %}
+        SELECT DISTINCT (STR(?capability) AS ?id) ?name ?description
+        WHERE {
+            ?trs        rdf:type    trov:TransparentResearchSystem .
+            ?trs        trov:hasCapability ?capability .
+            ?capability rdfs:label  ?name .
+            ?capability rdfs:comment    ?description .
+        }
+        ORDER BY ?trs ?capability
+    {% endquery %}
+    {{ query_trs_capability | df2json }}
+{% endtemplate %}
+
+{% template query_trp_str %}
+    {%- query datastore="rdflib", isfilepath=False as query_trp %}
+        SELECT DISTINCT ?trp ?in ?out
+        WHERE {
+            ?trp   rdf:type    trov:TransparentResearchPerformance .
+            ?trp   trov:accessedArrangement ?in .
+            ?trp   trov:contributedToArrangement ?out .
+        }
+        ORDER BY ?trp ?in ?out
+    {% endquery %}
+    {{ query_trp | df2json }}
+{% endtemplate %}
+
+{% template query_trp_details_str %}
+    {%- query datastore="rdflib", isfilepath=False as query_trp_details %}
+        SELECT DISTINCT ?trp ?description ?start ?end
+        WHERE {
+            ?trp   rdf:type             trov:TransparentResearchPerformance .
+            ?trp   rdfs:comment         ?description .
+            ?trp   trov:startedAtTime   ?start .
+            ?trp   trov:endedAtTime     ?end .
+        }
+        ORDER BY ?TRP ?start ?end
+    {% endquery %}
+    {{ query_trp_details | df2json }}
+{% endtemplate %}
+
+{% template style %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 5%;
+        }
+
+        h1 {
+            font-size: 4vw;
+            font-weight: bold;
+            color: white;
+            background-color: #13294B;
+        }
+
+        .logo {
+            height: 10vh;
+            vertical-align: middle;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border-collapse: collapse;
+            padding: 8px;
+            text-align: left;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+
+        th {
+            background-color: #B3E2CD;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        #ID_Button {
+            font-size: 1vw;
+            border: 2px solid #13294B;
+            background-color: white;
+            padding: 1%;
+            border-radius: 5px;
+            cursor: pointer;
+            float: right;
+        }
+        #ID_Button:hover {
+            border: 2px solid #FF5F05;
+        }
+
+        .button {
+            width: 100%;
+            height: 10vh;
+            background-color: #13294B; /*#A2A8AD*/
+            color: white;
+            padding: 1%; /* Padding inside the button */
+            font-size: 1.6vw; /* Font size */
+            font-weight: bold;
+            border: 2px solid white; /*#DEE2E6*/
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Cursor on hover */
+        }
+        .button:hover {
+            background-color: #FF5F05; /*#B3E2CD #708FA4*/
+        }
+
+        .content {
+        display: none;
+        padding: 3%;
+        border-left: 2px solid #DEE2E6;
+        border-right: 2px solid #DEE2E6;
+        border-bottom: 2px solid #DEE2E6;
+        border-radius: 5px;
+        background-color: #F8F9FA;
+        }
+    </style>
+{% endtemplate %}
+
+{% template script %}
+    <script>
+        const buttons = document.querySelectorAll(".button");
+        const contents = document.querySelectorAll(".content");
+        buttons.forEach((button, index) => {
+            button.addEventListener("click", function() {
+                if (contents[index].style.display === "none") {
+                    contents[index].style.display = "block";
+                } else {
+                    contents[index].style.display = "none";
+                }
+            });
+        });
+
+        // Show or Hide IDs
+        const ids = document.querySelectorAll(".id_col");
+        const button_id = document.getElementById("ID_Button");
+        button_id.addEventListener("click", function() {
+            if (ids[0].style.display === "none") {
+                ids.forEach((id) => {
+                    id.style.display = "block";
+                });
+            } else {
+                ids.forEach((id) => {
+                    id.style.display = "none";
+                });
+            }
+        });
+    </script>
+{% endtemplate %}

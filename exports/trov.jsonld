@@ -1,0 +1,277 @@
+{
+    "@context": [{
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "trov": "https://w3id.org/trace/2023/05/trov#"
+    }],
+
+    "@graph": [
+
+        {
+            "@id": "trov:TransparentResearchElement",
+            "@type": "rdfs:Class",
+            "rdfs:label": "TransparentResearchElement",
+            "rdfs:comment": "Common base class for TRSs, TRPs, and TROs."
+        },
+        {
+            "@id": "trov:TransparentResearchSystem",
+            "@type": "rdfs:Class",
+            "rdfs:subClassOf": { "@id": "trov:TransparentResearchElement" },
+            "rdfs:label": "TransparentResearchSystem",
+            "rdfs:comment": "A system certified to perform TRPs and assemble TROs."
+        },
+        {
+            "@id": "trov:TransparentResearchPerformance",
+            "@type": "rdfs:Class",
+            "rdfs:subClassOf": { "@id": "trov:TransparentResearchElement" },
+            "rdfs:label": "TransparentResearchPerformance",
+            "rdfs:comment": "A set of research operations performed by a TRS."
+        },
+        {
+            "@id": "trov:TransparentResearchObject",
+            "@type": "rdfs:Class",
+            "rdfs:subClassOf": { "@id": "trov:TransparentResearchElement" },
+            "rdfs:label": "TransparentResearchObject",
+            "rdfs:comment": "A set of research artifacts produced by a TRP and signed by the performing TRS."
+        },
+        {
+            "@id": "trov:TimeStampingAuthority",
+            "@type": "rdfs:Class",
+            "rdfs:subClassOf": { "@id": "trov:TransparentResearchElement" },
+            "rdfs:label": "TimeStampingAuthority",
+            "rdfs:comment": "A timestamping authority trusted by a TRS."
+        },
+        {
+            "@id": "trov:TREAttribute",
+            "@type": "rdfs:Class",
+            "rdfs:label": "TREAttribute",
+            "rdfs:comment": "An attribute of a TRS, TRP, or TRO."
+        },
+        {
+            "@id": "trov:TRSCapability",
+            "@type": "rdfs:Class",
+            "rdfs:label": "TRSCapability",
+            "rdfs:subClassOf": { "@id": "trov:TRSAttribute" },
+            "rdfs:comment": "A capability of a TRS."
+        },
+        {
+            "@id": "trov:CanProvideInternetIsolation",
+            "@type": "rdfs:Class",
+            "rdfs:label": "CanProvideInternetIsolation",
+            "rdfs:subClassOf": { "@id": "trov:TRSCapability" },
+            "rdfs:comment": "The capability to prevent Internet access during a TRP."
+        },
+        {
+            "@id": "trov:TRSPolicy",
+            "@type": "rdfs:Class",
+            "rdfs:label": "TRSPolicy",
+            "rdfs:subClassOf": { "@id": "trov:TRSCapability" },
+            "rdfs:comment": "A policy always enforced by a particular TRS."
+        },
+        {
+            "@id": "trov:EnforcesInternetIsolation",
+            "@type": "rdfs:Class",
+            "rdfs:label": "EnforcesInternetIsolation",
+            "rdfs:subClassOf": { "@id": "trov:TRSPolicy" },
+            "rdfs:comment": "The policy of always preventing Internet access during a TRP."
+        },
+        {
+            "@id": "trov:TROAttribute",
+            "@type": "rdfs:Class",
+            "rdfs:label": "TROAttribute",
+            "rdfs:subClassOf": { "@id": "trov:TREAttribute" },
+            "rdfs:comment": "An attribute of a particular TRO."
+        },
+        {
+            "@id": "trov:TRSAttribute",
+            "@type": "rdfs:Class",
+            "rdfs:label": "TRSAttribute",
+            "rdfs:subClassOf": { "@id": "trov:TREAttribute" },
+            "rdfs:comment": "An attribute of a TRS."
+        },
+        {
+            "@id": "trov:TRPAttribute",
+            "@type": "rdfs:Class",
+            "rdfs:label": "TRPAttribute",
+            "rdfs:subClassOf": { "@id": "trov:TREAttribute" },
+            "rdfs:comment": "An attribute of a TRP."
+        },
+        {
+            "@id": "trov:IncludesAllInputData",
+            "@type": "rdfs:Class",
+            "rdfs:label": "IncludesAllInputData",
+            "rdfs:subClassOf": { "@id": "trov:TROAttribute" },
+            "rdfs:comment": "TRO composition includes all input data employed in creating the TRO."
+        },
+        {
+            "@id": "trov:InternetIsolation",
+            "@type": "rdfs:Class",
+            "rdfs:label": "InternetIsolation",
+            "rdfs:subClassOf": { "@id": "trov:TRPAttribute" },
+            "rdfs:comment": "A TRO requires internet isolation."
+        },
+        {
+            "@id": "trov:InternetAccessRecording",
+            "@type": "rdfs:Class",
+            "rdfs:label": "InternetAccessRecording",
+            "rdfs:subClassOf": { "@id": "trov:TRPAttribute" },
+            "rdfs:comment": "A TRO requires internet access recording."
+        },
+        {
+            "@id": "trov:ResearchArtifact",
+            "@type": "rdfs:Class",
+            "rdfs:label": "ResearchArtifact",
+            "rdfs:comment": "A research artifact described by a TRO."
+        },
+        {
+            "@id": "trov:ArtifactCollection",
+            "@type": "rdfs:Class",
+            "rdfs:label": "ArtifactCollection",
+            "rdfs:comment": "Base class for collections of one or more artifacts."
+        },
+        {
+            "@id": "trov:ArtifactComposition",
+            "@type": "rdfs:Class",
+            "rdfs:label": "ArtifactComposition",
+            "rdfs:subClassOf": { "@id": "trov:ArtifactCollection" },
+            "rdfs:comment": "A set of artifacts described by a TRO."
+        },
+        {
+            "@id": "trov:CompositionFingerprint",
+            "@type": "rdfs:Class",
+            "rdfs:label": "CompositionFingerprint",
+            "rdfs:comment": "Unique fingerprint of a particular artifact composition"
+        },
+        {
+            "@id": "trov:ArtifactLocation",
+            "@type": "rdfs:Class",
+            "rdfs:label": "ArtifactLocus",
+            "rdfs:subClassOf": { "@id": "trov:ArtifactCollection" },
+            "rdfs:comment": "The location of a specific artifact."
+        },
+        {
+            "@id": "trov:ArtifactArrangement",
+            "@type": "rdfs:Class",
+            "rdfs:label": "ArtifactArrangement",
+            "rdfs:comment": "A set of loci describing the location of one or more artifacts"
+        },
+        {
+            "@id": "trov:TransparentResearchPerformance",
+            "@type": "rdfs:Class",
+            "rdfs:label": "TransparentResearchPerformance",
+            "rdfs:comment": "An execution of a research process"
+        },
+        {
+            "@id": "trov:hasCapability",
+            "@type": "rdf:Property",
+            "rdfs:label": "hasCapability",
+            "rdfs:domain": { "@id": "trov:TransparentResearchSystem" },
+            "rdfs:range": { "@id": "trov:TRSCapability" }
+        },
+        {
+            "@id": "trov:warrantedBy",
+            "@type": "rdf:Property",
+            "rdfs:label": "warrantedBy",
+            "rdfs:domain": { "@id": "trov:TRPAttribute" },
+            "rdfs:range": { "@id": "trov:TRSCapability" }
+        },
+        {
+            "@id": "trov:warrantedBy",
+            "@type": "rdf:Property",
+            "rdfs:label": "warrantedBy",
+            "rdfs:domain": { "@id": "trov:TROAttribute" },
+            "rdfs:range": { "@id": "trov:TRPAttribute" }
+        },
+        {
+            "@id": "trov:wasAssembledBy",
+            "@type": "rdf:Property",
+            "rdfs:label": "wasAssembledBy",
+            "rdfs:domain": { "@id": "trov:TransparentResearchObject" },
+            "rdfs:range": { "@id": "trov:TransparentResearchSystem" }
+        },
+        {
+            "@id": "trov:wasConductedBy",
+            "@type": "rdf:Property",
+            "rdfs:label": "wasConductedBy",
+            "rdfs:domain": { "@id": "trov:TransparentResearchPerformance" },
+            "rdfs:range": { "@id": "trov:TransparentResearchSystem" }
+        },
+        {
+            "@id": "trov:hadPerformanceAttribute",
+            "@type": "rdf:Property",
+            "rdfs:label": "hadPerformanceAttribute",
+            "rdfs:domain": { "@id": "trov:TransparentResearchPerformance" },
+            "rdfs:range": { "@id": "trov:TRPAttribute" }
+        },
+        {
+            "@id": "trov:accessedArrangement",
+            "@type": "rdf:Property",
+            "rdfs:label": "accessedArrangement",
+            "rdfs:domain": { "@id": "trov:TransparentResearchPerformance" },
+            "rdfs:range": { "@id": "trov:ArtifactArrangement" }
+        },
+        {
+            "@id": "trov:contributedToArrangement",
+            "@type": "rdf:Property",
+            "rdfs:label": "contributedToArrangement",
+            "rdfs:domain": { "@id": "trov:TransparentResearchPerformance" },
+            "rdfs:range": { "@id": "trov:ArtifactArrangement" }
+        },
+        {
+            "@id": "trov:hasPerformance",
+            "@type": "rdf:Property",
+            "rdfs:label": "hasPerformance",
+            "rdfs:domain": { "@id": "trov:TransparentResearchObject" },
+            "rdfs:range": { "@id": "trov:TransparentResearchPerformance" }
+        },
+        {
+            "@id": "trov:wasTimestampedBy",
+            "@type": "rdf:Property",
+            "rdfs:label": "wasTimestampedBy",
+            "rdfs:domain": { "@id": "trov:TransparentResearchObject" },
+            "rdfs:range": { "@id": "trov:TimeStampingAuthority" }
+        },
+        {
+            "@id": "trov:hasComposition",
+            "@type": "rdf:Property",
+            "rdfs:label": "hasComposition",
+            "rdfs:domain": { "@id": "trov:TransparentResearchObject" },
+            "rdfs:range": { "@id": "trov:ArtifactComposition" }
+        },
+        {
+            "@id": "trov:hasFingerprint",
+            "@type": "rdf:Property",
+            "rdfs:label": "hasFingerprint",
+            "rdfs:domain": { "@id": "trov:ArtifactComposition" },
+            "rdfs:range": { "@id": "trov:CompositionFingerprint" }
+        },
+        {
+            "@id": "trov:hasArtifact",
+            "@type": "rdf:Property",
+            "rdfs:label": "hasArtifact",
+            "rdfs:domain": { "@id": "trov:ArtifactCollection" },
+            "rdfs:range": { "@id": "trov:ResearchArtifact" }
+        },
+        {
+            "@id": "trov:hasArrangement",
+            "@type": "rdf:Property",
+            "rdfs:label": "hasArrangement",
+            "rdfs:domain": { "@id": "trov:TransparentResearchObject" },
+            "rdfs:range": { "@id": "trov:ArtifactArrangement" }
+        },
+        {
+            "@id": "trov:hasArtifactLocation",
+            "@type": "rdf:Property",
+            "rdfs:label": "hasLocus",
+            "rdfs:domain": { "@id": "trov:ArtifactArrangement" },
+            "rdfs:range": { "@id": "trov:ArtifactLocation" }
+        },
+        {
+            "@id": "trov:hasLocation",
+            "@type": "rdf:Property",
+            "rdfs:label": "hasLocus",
+            "rdfs:domain": { "@id": "trov:ArtifactLocation" },
+            "rdfs:range": { "@id": "rdfs:Literal" }
+        }
+    ]
+}

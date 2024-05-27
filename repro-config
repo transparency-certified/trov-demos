@@ -1,0 +1,14 @@
+REPRO_NAME=trov-demos
+REPRO_DOCKER_ORG=cirss
+REPRO_IMAGE_TAG=latest
+
+REPRO_MOUNT_OTHER_VOLUMES=-v ${PWD}/../geist-p:/mnt/geist-p
+
+
+PYTHON_VERSION=3.10.12
+PARENT_IMAGE=${REPRO_DOCKER_ORG}/python-dev-${PYTHON_VERSION}-parent:latest
+
+image:                  build-image   ## 
+start:                  start-repro   ## 
+
+## 

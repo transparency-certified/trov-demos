@@ -1,0 +1,76 @@
+{
+    "@context": [{
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "trov": "https://w3id.org/trace/2023/05/trov#",
+        "@base": "https://github.com/transparency-certified/trov-demos/tree/main/demo/03-validate-tro-declaration/"
+    }],
+
+    "@graph": [
+    {
+        "@id": "tro/1",
+        "@type": "trov:TransparentResearchObject",
+        "rdfs:comment": "A composition of two files in a single arrangement endorsed by a TRS that enforces no policies",
+
+        "trov:wasAssembledBy": {
+            "@id": "trs",
+            "@type": "trov:TransparentResearchSystem",
+            "rdfs:comment": "TRS that enforces no policies",
+            "trov:publicKey": "-----BEGIN PGP PUBLIC KEY BLOCK-----\nmI0EZDYvLQEEALgKOwntOmQquijOSnnOOHYAEMKwIO//Ukogb8ftzIBGZ6PSSI9f\nPFa62W7k1CWEm7KLcOO5hlmMvI+GJLnLa4y60wxcKEq26Hi/r9SPO2HbjJMo9vy6\nTbwSndwn148wKzpfSH4dt3v5xJJ5ty0nz2k3cKsKxuOV/X23R0GotxUtABEBAAG0\nHXJlcHJvIHVzZXIgPHJlcHJvQHJlcHJvcy5kZXY+iM4EEwEKADgWIQQS8oDdaGyb\nHbIUMG5hkHOSVXRlzAUCZDYvLQIbLwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAK\nCRBhkHOSVXRlzJeoA/40RSsS88t6zXgBmHZDXyV9d5+CknyQ3yV/fpEU+IH2T6qS\nxrj9JZ8wIk4K2yntksmNOioztGyzTwrZlf6Gd/xo0U26ptKgxppBQZV/Wbzjpo1N\nIsGEo6zUxyfInIxL/nnAlktGhl9B8teoyqwmMCP8bmrUiLSeex+1An5ogCOACg==\n=vuaX\n-----END PGP PUBLIC KEY BLOCK-----\n"
+        },
+
+        "trov:wasTimestampedBy": {
+            "@id": "tsa",
+            "@type": "trov:TimeStampingAuthority",
+            "trov:publicKey": "-----BEGIN PGP PUBLIC KEY BLOCK-----\nmI0EZDYvLQEEALgKOwntOmQquijOSnnOOHYAEMKwIO//Ukogb8ftzIBGZ6PSSI9f\nPFa62W7k1CWEm7KLcOO5hlmMvI+GJLnLa4y60wxcKEq26Hi/r9SPO2HbjJMo9vy6\nTbwSndwn148wKzpfSH4dt3v5xJJ5ty0nz2k3cKsKxuOV/X23R0GotxUtABEBAAG0\nHXJlcHJvIHVzZXIgPHJlcHJvQHJlcHJvcy5kZXY+iM4EEwEKADgWIQQS8oDdaGyb\nHbIUMG5hkHOSVXRlzAUCZDYvLQIbLwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAK\nCRBhkHOSVXRlzJeoA/40RSsS88t6zXgBmHZDXyV9d5+CknyQ3yV/fpEU+IH2T6qS\nxrj9JZ8wIk4K2yntksmNOioztGyzTwrZlf6Gd/xo0U26ptKgxppBQZV/Wbzjpo1N\nIsGEo6zUxyfInIxL/nnAlktGhl9B8teoyqwmMCP8bmrUiLSeex+1An5ogCOACg==\n=vuaX\n-----END PGP PUBLIC KEY BLOCK-----\n"
+        },
+
+        "trov:hasComposition":
+        {
+            "@id": "composition/1",
+            "@type": "trov:ArtifactComposition",
+
+            "trov:hasFingerprint":
+            {
+                "@id": "fingerprint",
+                "@type": "trov:CompositionFingerprint",
+                "trov:sha256": "218d9c33959c89013ca3f0f9dfa9479e0df8d5e4a53bb319b5bfab87f506dadc"
+            },
+
+            "trov:hasArtifact": [
+            {
+                "@id": "composition/1/artifact/1",
+                "@type": "trov:ResearchArtifact",
+                "trov:mimeType": "text/plain",
+                "trov:sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
+            },
+
+            {
+                "@id": "composition/1/artifact/2",
+                "@type": "trov:ResearchArtifact",
+                "trov:mimeType": "text/plain",
+                "trov:sha256": "7d865e959b2466918c9863afca942d0fb89d7c9ac0c99bafc3749504ded97730"
+            }]
+        },
+
+        "trov:hasArrangement": [
+            {
+            "@id": "arrangement/1",
+            "@type": "trov:ArtifactArrangement",
+            "trov:hasArtifactLocation": [
+                {
+                    "@id": "arrangement/1/location/1",
+                    "@type": "trov:ArtifactLocation",
+                    "trov:hasArtifact": { "@id": "composition/1/artifact/1" },
+                    "trov:hasLocation": "file1"
+                },
+                {
+                    "@id": "arrangement/1/location/2",
+                    "@type": "trov:ArtifactLocation",
+                    "trov:hasArtifact": { "@id": "composition/1/artifact/100" },
+                    "trov:hasLocation": "file2"
+                }
+            ]
+        }]
+    }
+]}

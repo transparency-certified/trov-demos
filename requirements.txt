@@ -1,0 +1,12 @@
+pandas
+jsonschema
+rdflib
+owlrl
+pyshacl
+pygraphviz
+rdfvr==0.3.3
+jinja2
+jinja2_simple_tags
+tabulate
+PyLD
+geist-p@git+https://github.com/CIRSS/geist-p@v0.2.0

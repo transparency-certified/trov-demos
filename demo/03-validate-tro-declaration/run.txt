@@ -1,0 +1,195 @@
+================================ bash cell | tro validation 1 txt: refer to a nonexistent artifact =================================
+
+rdfvr -f data/tro1.jsonld -s data/tro.schema.ttl -m data/mappings.json
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+Path of the RDF graph to be validated: data/tro1.jsonld
+Path of the SHACL file: data/tro.schema.ttl
+Datetime: 2024-05-27 23:27:03.942522
+
+************************************************************
+* Suggested Node(s) to be Updated:                         *
+* ['composition/1/artifact/100']                           *
+************************************************************
+Node: arrangement/1/location/2 
+Error Message: Value does not have class trov:ResearchArtifact
+
+************************************************************
+* Suggested Node(s) to be Updated: ['tro/1']               *
+************************************************************
+Node: tro/1 
+Error Message: Less than 1 values on <tro/1>->trov:wasAssembledBy
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+================================ bash cell | tro validation 1 html: refer to a nonexistent artifact ================================
+
+rdfvr -f data/tro1.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro1 -of html
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+Path of the RDF graph to be validated: data/tro1.jsonld
+Path of the SHACL file: data/tro.schema.ttl
+Datetime: 2024-05-27 23:27:05.316502
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+================================ bash cell | tro validation 2 txt: refer to a nonexistent artifact =================================
+
+rdfvr -f data/tro2.jsonld -s data/tro.schema.ttl -m data/mappings.json
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+Path of the RDF graph to be validated: data/tro2.jsonld
+Path of the SHACL file: data/tro.schema.ttl
+Datetime: 2024-05-27 23:27:06.821348
+
+************************************************************
+* Suggested Node(s) to be Updated:                         *
+* ['composition/1/artifact/100']                           *
+************************************************************
+Node: arrangement/1/location/2 
+Error Message: Value does not have class trov:ResearchArtifact
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+================================ bash cell | tro validation 2 html: refer to a nonexistent artifact ================================
+
+rdfvr -f data/tro2.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro2 -of html
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+Path of the RDF graph to be validated: data/tro2.jsonld
+Path of the SHACL file: data/tro.schema.ttl
+Datetime: 2024-05-27 23:27:08.240316
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+================================ bash cell | tro validation 3 txt: refer to a nonexistent artifact =================================
+
+rdfvr -f data/tro3.jsonld -s data/tro.schema.ttl -m data/mappings.json
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+Path of the RDF graph to be validated: data/tro3.jsonld
+Path of the SHACL file: data/tro.schema.ttl
+Datetime: 2024-05-27 23:27:09.843938
+
+************************************************************
+* Suggested Node(s) to be Updated:                         *
+* ['composition/1/artifact/100']                           *
+************************************************************
+Node: arrangement/1/location/4 
+Error Message: Value does not have class trov:ResearchArtifact
+
+************************************************************
+* Suggested Node(s) to be Updated: ['composition/2']       *
+************************************************************
+Node: composition/2 
+Error Message: Less than 1 values on <composition/2>->trov:hasArtifact
+
+************************************************************
+* Suggested Node(s) to be Updated: ['fingerprint']         *
+************************************************************
+Node: fingerprint 
+Error Message: *** Each fingerprint should have EXACTLY ONE sha256 with String format ***
+
+************************************************************
+* Suggested Node(s) to be Updated: ['trs']                 *
+************************************************************
+Node: trs 
+Error Message: More than 1 values on <trs>->trov:publicKey
+
+************************************************************
+* Suggested Node(s) to be Updated: ['tsa']                 *
+************************************************************
+Node: tsa 
+Error Message: More than 1 values on <tsa>->trov:publicKey
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+================================ bash cell | tro validation 3 html: refer to a nonexistent artifact ================================
+
+rdfvr -f data/tro3.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro3 -of html
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+Path of the RDF graph to be validated: data/tro3.jsonld
+Path of the SHACL file: data/tro.schema.ttl
+Datetime: 2024-05-27 23:27:11.298134
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+========================================= bash cell | tro validation 4 txt: lack of sha256 =========================================
+
+rdfvr -f data/tro4.jsonld -s data/tro.schema.ttl -m data/mappings.json
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+Path of the RDF graph to be validated: data/tro4.jsonld
+Path of the SHACL file: data/tro.schema.ttl
+Datetime: 2024-05-27 23:27:12.657227
+
+************************************************************
+* Suggested Node(s) to be Updated: ['fp1']                 *
+************************************************************
+Node: fp1 
+Error Message: *** Each fingerprint should have EXACTLY ONE sha256 with String format ***
+
+************************************************************
+* Suggested Node(s) to be Updated: ['tro/1']               *
+************************************************************
+Node: tro/1 
+Error Message: Less than 1 values on <tro/1>->trov:wasAssembledBy
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+======================================== bash cell | tro validation 4 html: lack of sha256 =========================================
+
+rdfvr -f data/tro4.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro4 -of html
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+Path of the RDF graph to be validated: data/tro4.jsonld
+Path of the SHACL file: data/tro.schema.ttl
+Datetime: 2024-05-27 23:27:14.086240
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+======================================== bash cell | tro validation 5 txt: multiple sha256 =========================================
+
+rdfvr -f data/tro5.jsonld -s data/tro.schema.ttl -m data/mappings.json
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+Path of the RDF graph to be validated: data/tro5.jsonld
+Path of the SHACL file: data/tro.schema.ttl
+Datetime: 2024-05-27 23:27:15.352024
+
+************************************************************
+* Suggested Node(s) to be Updated: ['fp1']                 *
+************************************************************
+Node: fp1 
+Error Message: *** Each fingerprint should have EXACTLY ONE sha256 with String format ***
+
+************************************************************
+* Suggested Node(s) to be Updated: ['tro/1']               *
+************************************************************
+Node: tro/1 
+Error Message: Less than 1 values on <tro/1>->trov:wasAssembledBy
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+======================================== bash cell | tro validation 5 html: multiple sha256 ========================================
+
+rdfvr -f data/tro5.jsonld -s data/tro.schema.ttl -m data/mappings.json -o products/tro5 -of html
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+Path of the RDF graph to be validated: data/tro5.jsonld
+Path of the SHACL file: data/tro.schema.ttl
+Datetime: 2024-05-27 23:27:16.582647
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+

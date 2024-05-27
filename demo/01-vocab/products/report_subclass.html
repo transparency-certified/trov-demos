@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body { margin: 3%; }
+            table, th, tr, td {
+                border:1px solid #69899F;
+                border-collapse: collapse;
+            }
+        </style>
+        <title>Subclass Report</title>
+    </head>    <body>
+        <h1>Visualize subclass of the vocabularies</h1>
+        <h4>1. SVG</h4>
+        <img src="img.svg" width=80%>
+        <h4>2. GV</h4>
+        <pre><code >
+    digraph subclass_vocab_graph {
+    rankdir=LR
+    fontname=Courier; fontsize=12; labelloc=t
+    label="Subclass Vocab Graph"
+            node[shape=box style="filled, rounded" fillcolor="#b3e2cd" peripheries=1 fontname=Courier]
+                            
+    ArtifactComposition -> ArtifactCollection                            
+    ArtifactLocus -> ArtifactCollection                            
+    TROAttribute -> TREAttribute                            
+    TRPAttribute -> TREAttribute                            
+    TRSAttribute -> TREAttribute                            
+    IncludesAllInputData -> TROAttribute                            
+    InternetAccessRecording -> TRPAttribute                            
+    InternetIsolation -> TRPAttribute                            
+    TRSCapability -> TRSAttribute                            
+    CanProvideInternetIsolation -> TRSCapability                            
+    TRSPolicy -> TRSCapability                            
+    EnforcesInternetIsolation -> TRSPolicy                            
+    TimeStampingAuthority -> TransparentResearchElement                            
+    TransparentResearchObject -> TransparentResearchElement                            
+    TransparentResearchPerformance -> TransparentResearchElement                            
+    TransparentResearchSystem -> TransparentResearchElement            
+            
+    }        </code></pre>        
+        <h4>3. Table</h3>
+        <table>
+            <tr><th>ParentLabel</th><th>ChildLabel</th></tr>
+        
+			<tr><td>ArtifactCollection</td><td>ArtifactComposition</td>
+			<tr><td>ArtifactCollection</td><td>ArtifactLocus</td>
+			<tr><td>TREAttribute</td><td>TROAttribute</td>
+			<tr><td>TREAttribute</td><td>TRPAttribute</td>
+			<tr><td>TREAttribute</td><td>TRSAttribute</td>
+			<tr><td>TROAttribute</td><td>IncludesAllInputData</td>
+			<tr><td>TRPAttribute</td><td>InternetAccessRecording</td>
+			<tr><td>TRPAttribute</td><td>InternetIsolation</td>
+			<tr><td>TRSAttribute</td><td>TRSCapability</td>
+			<tr><td>TRSCapability</td><td>CanProvideInternetIsolation</td>
+			<tr><td>TRSCapability</td><td>TRSPolicy</td>
+			<tr><td>TRSPolicy</td><td>EnforcesInternetIsolation</td>
+			<tr><td>TransparentResearchElement</td><td>TimeStampingAuthority</td>
+			<tr><td>TransparentResearchElement</td><td>TransparentResearchObject</td>
+			<tr><td>TransparentResearchElement</td><td>TransparentResearchPerformance</td>
+			<tr><td>TransparentResearchElement</td><td>TransparentResearchSystem</td>
+        </table>
+    </body>
+</html>

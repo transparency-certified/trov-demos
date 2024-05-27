@@ -1,0 +1,128 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix trov: <https://w3id.org/trace/2023/05/trov#> .
+@prefix : <https://github.com/transparency-certified/trov-demos/tree/main/demo/03-validate-tro-declaration/> .
+
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+
+schema:TroShape
+    a sh:NodeShape ;
+    sh:targetClass trov:TransparentResearchObject ;
+    sh:property [ # One TRO has ANY number of comments
+        sh:path rdfs:comment ;
+        sh:datatype xsd:string ;
+    ] ;
+    sh:property [ # One TRO has EXACTLY ONE TRS
+        sh:path trov:wasAssembledBy ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:node schema:TrsShape ;
+    ] ;
+    sh:property [ # One TRO has at MOST ONE TSA
+        sh:path trov:wasTimestampedBy ;
+        sh:maxCount 1 ;
+        sh:node schema:TsaShape ;
+    ] ;
+    sh:property [ # One TRO has at LEAST ONE composition
+        sh:path trov:hasComposition ;
+        sh:minCount 1 ;
+        sh:node schema:CompShape ;
+    ] ;
+    sh:property [ # One TRO has at LEAST ONE arrangement
+        sh:path trov:hasArrangement ;
+        sh:minCount 1 ;
+        sh:node schema:ArrShape ;
+    ] .
+
+
+schema:TrsShape
+    a sh:NodeShape ;
+    sh:targetClass trov:TransparentResearchSystem ;
+    sh:property [
+        sh:path rdfs:comment ;
+        sh:datatype xsd:string ;
+    ] ;
+    sh:property [ # One TRS has EXACTLY ONE public key
+        sh:path trov:publicKey ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
+
+schema:TsaShape
+    a sh:NodeShape ;
+    sh:targetClass trov:TimeStampingAuthority ;
+    sh:property [ # One TSA has EXACTLY ONE public key
+        sh:path trov:publicKey ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
+
+schema:CompShape
+    a sh:NodeShape ;
+    sh:targetClass trov:ArtifactComposition ;
+    sh:property [ # Each composition has EXACTLY ONE fingerprint
+        sh:path trov:hasFingerprint ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:node schema:FingerprintShape ;
+    ] ;
+    sh:property [ # Each composition has at LEAST ONE artifact
+        sh:path trov:hasArtifact ;
+        sh:minCount 1 ;
+        sh:node schema:ArtifactShape ;
+    ] .
+
+schema:FingerprintShape
+    a sh:NodeShape ;
+    sh:targetClass trov:CompositionFingerprint ;
+    sh:property [ # Each composition has at EXACTLY ONE sha256
+        sh:message "*** Each fingerprint should have EXACTLY ONE sha256 with String format ***" ;
+        sh:path trov:sha256 ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
+
+schema:ArtifactShape
+    a sh:NodeShape ;
+    sh:targetClass trov:ResearchArtifact ;
+    sh:property [ # Each artifact has at MOST ONE memeType
+        sh:path trov:mimeType ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [ # Each artifact has EXACTLY ONE sha256
+        sh:path trov:sha256 ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
+
+schema:ArrShape
+    a sh:NodeShape ;
+    sh:targetClass trov:ArtifactArrangement ;
+    sh:property [ # Each artifact has at LEAST ONE artifact location
+        sh:path trov:hasArtifactLocation ;
+        sh:minCount 1 ;
+        sh:node schema:ArtifactLocationShape ;
+    ] .
+
+schema:ArtifactLocationShape
+    a sh:NodeShape ;
+    sh:targetClass trov:ArtifactLocation ;
+    sh:property [ # Each artifact location is linked to a valid artifact
+        sh:path trov:hasArtifact ;
+        sh:class trov:ResearchArtifact ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [ # Each artifact location has EXACTLY ONE location
+        sh:path trov:hasLocation ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .

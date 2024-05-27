@@ -1,0 +1,150 @@
+======================================= bash cell | load trov vocabulary without inferences ========================================
+
+# Destroy the dataset
+geist destroy rdflib --dataset kb --quiet
+
+# Import TRACE vocabulary and export as N-TRIPLES
+geist create rdflib --dataset kb --inputformat json-ld --inputfile /mnt/trov-demos/exports/trov.jsonld --infer none
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+================================================= bash cell | query subclass vocab =================================================
+
+# What (ParentClass, ChildClass) pairs does trov vocabulary have?
+
+geist report --outputroot products << END_TEMPLATE
+
+{%- use "templates.geist" %}
+{%- query datastore="rdflib", isfilepath=False as query_subclass_vocab %}
+    PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+    SELECT DISTINCT ?ParentLabel ?ChildLabel
+    WHERE {
+        ?ParentClass    rdf:type        rdfs:Class ;
+                        rdfs:label      ?ParentLabel .
+        
+        ?ChildClass     rdfs:subClassOf ?ParentClass ;
+                        rdf:type        rdfs:Class ;
+                        rdfs:label      ?ChildLabel .
+
+        FILTER (?ParentLabel != ?ChildLabel)
+    }
+    ORDER BY ?ParentLabel ?ChildLabel
+{% endquery %}
+
+{%- html "report_subclass.html" %}
+{%- head "Subclass Report" %}
+    <body>
+        <h1>Visualize subclass of the vocabularies</h1>
+        <h4>1. SVG</h4>
+        {% img src="img.svg", width="80%" %}
+            {%- gv_graph "subclass_vocab_graph", "LR" %}
+            {%- gv_title "Subclass Vocab Graph" %}
+
+            node[shape=box style="filled, rounded" fillcolor="#b3e2cd" peripheries=1 fontname=Courier]
+            {% for _, row in query_subclass_vocab.iterrows() %}
+                {% gv_edge row["ChildLabel"], row["ParentLabel"] %}
+            {% endfor %}
+
+            {% gv_end %}
+        {% endimg %}
+
+        <h4>2. GV</h4>
+        {% img src="img.gv" %}
+            {%- gv_graph "subclass_vocab_graph", "LR" %}
+            {%- gv_title "Subclass Vocab Graph" %}
+
+            node[shape=box style="filled, rounded" fillcolor="#b3e2cd" peripheries=1 fontname=Courier]
+            {% for _, row in query_subclass_vocab.iterrows() %}
+                {% gv_edge row["ChildLabel"], row["ParentLabel"] %}
+            {% endfor %}
+
+            {% gv_end %}
+        {% endimg %}
+        
+        <h4>3. Table</h3>
+        {%- table %}
+            {{ query_subclass_vocab | df2json }}
+        {% endtable %}
+</body>
+{% endhtml %}
+{%- destroy %}
+    
+END_TEMPLATE
+
+----------------------------------------------------------- cell outputs -----------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body { margin: 3%; }
+            table, th, tr, td {
+                border:1px solid #69899F;
+                border-collapse: collapse;
+            }
+        </style>
+        <title>Subclass Report</title>
+    </head>    <body>
+        <h1>Visualize subclass of the vocabularies</h1>
+        <h4>1. SVG</h4>
+        <img src="img.svg" width=80%>
+        <h4>2. GV</h4>
+        <pre><code >
+    digraph subclass_vocab_graph {
+    rankdir=LR
+    fontname=Courier; fontsize=12; labelloc=t
+    label="Subclass Vocab Graph"
+            node[shape=box style="filled, rounded" fillcolor="#b3e2cd" peripheries=1 fontname=Courier]
+                            
+    ArtifactComposition -> ArtifactCollection                            
+    ArtifactLocus -> ArtifactCollection                            
+    TROAttribute -> TREAttribute                            
+    TRPAttribute -> TREAttribute                            
+    TRSAttribute -> TREAttribute                            
+    IncludesAllInputData -> TROAttribute                            
+    InternetAccessRecording -> TRPAttribute                            
+    InternetIsolation -> TRPAttribute                            
+    TRSCapability -> TRSAttribute                            
+    CanProvideInternetIsolation -> TRSCapability                            
+    TRSPolicy -> TRSCapability                            
+    EnforcesInternetIsolation -> TRSPolicy                            
+    TimeStampingAuthority -> TransparentResearchElement                            
+    TransparentResearchObject -> TransparentResearchElement                            
+    TransparentResearchPerformance -> TransparentResearchElement                            
+    TransparentResearchSystem -> TransparentResearchElement            
+            
+    }        </code></pre>        
+        <h4>3. Table</h3>
+        <table>
+            <tr><th>ParentLabel</th><th>ChildLabel</th></tr>
+        
+			<tr><td>ArtifactCollection</td><td>ArtifactComposition</td>
+			<tr><td>ArtifactCollection</td><td>ArtifactLocus</td>
+			<tr><td>TREAttribute</td><td>TROAttribute</td>
+			<tr><td>TREAttribute</td><td>TRPAttribute</td>
+			<tr><td>TREAttribute</td><td>TRSAttribute</td>
+			<tr><td>TROAttribute</td><td>IncludesAllInputData</td>
+			<tr><td>TRPAttribute</td><td>InternetAccessRecording</td>
+			<tr><td>TRPAttribute</td><td>InternetIsolation</td>
+			<tr><td>TRSAttribute</td><td>TRSCapability</td>
+			<tr><td>TRSCapability</td><td>CanProvideInternetIsolation</td>
+			<tr><td>TRSCapability</td><td>TRSPolicy</td>
+			<tr><td>TRSPolicy</td><td>EnforcesInternetIsolation</td>
+			<tr><td>TransparentResearchElement</td><td>TimeStampingAuthority</td>
+			<tr><td>TransparentResearchElement</td><td>TransparentResearchObject</td>
+			<tr><td>TransparentResearchElement</td><td>TransparentResearchPerformance</td>
+			<tr><td>TransparentResearchElement</td><td>TransparentResearchSystem</td>
+        </table>
+    </body>
+</html>
+    
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
