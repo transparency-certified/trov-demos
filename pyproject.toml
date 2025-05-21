@@ -7,6 +7,9 @@ name = "trov-demos"
 version = "0.0.1"
 dynamic = ["dependencies"]
 
+[tool.setuptools]
+packages = ["demo", "exports"]
+
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
 
