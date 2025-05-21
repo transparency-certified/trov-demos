@@ -1,0 +1,31 @@
+{
+    "@context": [{
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "trov": "https://w3id.org/trace/2023/05/trov#"
+    }],
+
+    "@graph": [
+        {
+            "@id": "trov:CanRecordInternetAccess",
+            "@type": "rdfs:Class",
+            "rdfs:subClassOf": { "@id": "trov:TRSCapability" },
+            "rdfs:label": "Capability of Recording Internet Access",
+            "rdfs:comment": "TRS can record internet access"
+        },
+        {
+            "@id": "trov:CanProvideInternetIsolation",
+            "@type": "rdfs:Class",
+            "rdfs:subClassOf": { "@id": "trov:TRSCapability" },
+            "rdfs:label": "Capability of Providing Internet Isolation",
+            "rdfs:comment": "TRS can provide Internet isolation"
+        },
+        {
+            "@id": "trov:CanRecordComputingResources",
+            "@type": "rdfs:Class",
+            "rdfs:subClassOf": { "@id": "trov:TRSCapability" },
+            "rdfs:label": "Capability of Recording Computing Resources",
+            "rdfs:comment": "TRS can record computing resources"
+        }
+    ]
+}
