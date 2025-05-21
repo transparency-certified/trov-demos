@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TRS Report</title>
+    </head>
+    <body>        <h1><img src="https://transparency-certified.github.io/trace-specification/_static/logo.png" alt="Logo" class="logo">  TRS Report</h1>
+        <h3>This Transparent Research System (TRS):</h3>                <u>TRACE Reference Implementation</u>
+        <br><br><i class="id_col">TRS ID: trs</i>
+        <ul>
+            <li>Publisher: TRACE Project</li>
+            <li>TRS Description: TRS that can monitor network accesses or provide Internet isolation</li>
+            <li>Capabilities: 2 (see below)</li>
+        </ul>
+                <h3>Implemented capabilities:</h3>
+        <table>
+            <tr><th>Capability ID</th><th>Capability Type</th><th>Description</th></tr>
+        
+			<tr><td>trs/capability/1</td><td>&lttrov:CanDetectInternetAccess&gt</td><td>TRS can detect Internet access</td>
+			<tr><td>trs/capability/2</td><td>&lttrov:CanEnforceInternetIsolation&gt</td><td>TRS can enforce Internet isolation</td>
+        </table>
+            <h3>Available capability types:</h3>
+        <table>
+            <tr><th>Capability Type</th><th>Description</th></tr>
+        
+			<tr><td>&lttrov:CanDetectInternetAccess&gt</td><td>TRS can detect Internet access</td>
+			<tr><td>&lttrov:CanEnforceCapabilitiesTechnically&gt</td><td>TRS can enforce all of its capabilities technically</td>
+			<tr><td>&lttrov:CanEnforceInternetIsolation&gt</td><td>TRS can enforce Internet isolation</td>
+			<tr><td>&lttrov:CanEnsureCodeIncludedInTROPackage&gt</td><td>TRS can ensure that all custom code included in TRO package</td>
+			<tr><td>&lttrov:CanEnsureInputDataIncludedInTROPackage&gt</td><td>TRS can ensure that all input data included in TRO package</td>
+			<tr><td>&lttrov:CanEnsureInputDataPersistsAfterRun&gt</td><td>TRS can ensure that all input data persists after run</td>
+			<tr><td>&lttrov:CanEnsureOutputDataIncludedInTROPackage&gt</td><td>TRS can ensure that all output data included in TRO package</td>
+			<tr><td>&lttrov:CanPreventUserInteractionDuringRun&gt</td><td>TRS can prevent user interaction during run</td>
+			<tr><td>&lttrov:CanRecordSoftwareEnvironment&gt</td><td>TRS can record a full description of software environment</td>
+			<tr><td>&lttrov:CanRequireInputDataExistsBeforeRun&gt</td><td>TRS can require that all input data exists prior to run</td>
+			<tr><td>&lttrov:CanRequireInputDataLocalBeforeRun&gt</td><td>TRS can require that all input data is stored locally prior to run</td>
+        </table>
+    
+    </body>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 5%;
+        }
+
+        h1 {
+            font-size: 4vw;
+            font-weight: bold;
+            color: white;
+            background-color: #13294B;
+        }
+
+        .logo {
+            height: 10vh;
+            vertical-align: middle;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border-collapse: collapse;
+            padding: 8px;
+            text-align: left;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+
+        th {
+            background-color: #B3E2CD;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        #ID_Button {
+            font-size: 1vw;
+            border: 2px solid #13294B;
+            background-color: white;
+            padding: 1%;
+            border-radius: 5px;
+            cursor: pointer;
+            float: right;
+        }
+        #ID_Button:hover {
+            border: 2px solid #FF5F05;
+        }
+
+        .button {
+            width: 100%;
+            height: 10vh;
+            background-color: #13294B; /*#A2A8AD*/
+            color: white;
+            padding: 1%; /* Padding inside the button */
+            font-size: 1.6vw; /* Font size */
+            font-weight: bold;
+            border: 2px solid white; /*#DEE2E6*/
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Cursor on hover */
+        }
+        .button:hover {
+            background-color: #FF5F05; /*#B3E2CD #708FA4*/
+        }
+
+        .content {
+        display: none;
+        padding: 3%;
+        border-left: 2px solid #DEE2E6;
+        border-right: 2px solid #DEE2E6;
+        border-bottom: 2px solid #DEE2E6;
+        border-radius: 5px;
+        background-color: #F8F9FA;
+        }
+    </style>
+    <script>
+        const buttons = document.querySelectorAll(".button");
+        const contents = document.querySelectorAll(".content");
+        buttons.forEach((button, index) => {
+            button.addEventListener("click", function() {
+                if (contents[index].style.display === "none") {
+                    contents[index].style.display = "block";
+                } else {
+                    contents[index].style.display = "none";
+                }
+            });
+        });
+
+        // Show or Hide IDs
+        const ids = document.querySelectorAll(".id_col");
+        const button_id = document.getElementById("ID_Button");
+        button_id.addEventListener("click", function() {
+            if (ids[0].style.display === "none") {
+                ids.forEach((id) => {
+                    id.style.display = "block";
+                });
+            } else {
+                ids.forEach((id) => {
+                    id.style.display = "none";
+                });
+            }
+        });
+    </script>
+</html>

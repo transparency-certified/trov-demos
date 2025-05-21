@@ -65,7 +65,7 @@ demo
 
 Below gives a brief description of these demonstrations:
 - __01-vocab__: query the _Transparent Research Object Vocabulary_ (__TROV__) and visualize the subclass relationship (check [report](https://transparency-certified.github.io/trov-demos/demo/01-vocab/products/report_subclass.html)).
-- __02-tro-examples__: query three _Transparent Research Objects_ (__TROs__), _01-two-artifacts-no-trp_, _02-three-artifacts-one-trp_, and _03-skope-lbda-processing_ (check [TRO report](https://transparency-certified.github.io/trov-demos/demo/02-tro-examples/03-skope-lbda-processing/products/report.html)).
+- __02-tro-examples__: query three _Transparent Research Objects_ (__TROs__), _01-two-artifacts-no-trp_, _02-three-artifacts-one-trp_, and _03-skope-lbda-processing_ (check [TRO report](https://transparency-certified.github.io/trov-demos/demo/02-tro-examples/03-skope-lbda-processing/products/report.html), [TRS report](https://transparency-certified.github.io/trov-demos/demo/02-tro-examples/03-skope-lbda-processing/products/report_trs.html)).
 - __03-validate-tro-declaration__ demonstrates how a TRO declaration can be validated through 5 examples.
 
 To establish that the demonstrations can be reproduced, first use the `make clean-demo` command to delete the files produced by the demo:

@@ -104,3 +104,46 @@ END_TEMPLATE
 END_CELL
 
 # ------------------------------------------------------------------------------
+
+bash_cell trs_report << END_CELL
+
+geist report --outputroot products << END_TEMPLATE
+
+{%- use "templates.geist" %}
+{%- html "report_trs.html" %}
+{%- head "TRS Report" %}
+
+    <body>
+        {%- create datastore="rdflib" %} trs/trs.jsonld {% endcreate %}
+        <h1><img src="https://transparency-certified.github.io/trace-specification/_static/logo.png" alt="Logo" class="logo">  TRS Report</h1>
+        <h3>This Transparent Research System (TRS):</h3>
+        {%- map isfilepath=False, mappings="mappings.json" as query_trs %} {% query_trs_str %} {% endmap %}
+        {% for _, row in query_trs.iterrows() %}
+        <u>{{ row["trs_name"] }}</u>
+        <br><br><i class="id_col">TRS ID: {{ row["trs_id"] }}</i>
+        <ul>
+            <li>Publisher: {{ row["trs_publisher"] }}</li>
+            <li>TRS Description: {{ row["trs_descr"] }}</li>
+            <li>Capabilities: {{ row["num_of_capabilities"] }} (see below)</li>
+        </ul>
+        {% endfor %}
+        <h3>Implemented capabilities:</h3>
+        {%- table mappings="mappings.json" %}{% query_trs_capability_str %}{% endtable %}
+        {%- destroy %}
+
+        {%- create datastore="rdflib" %} ../../../exports/trs.jsonld {% endcreate %}
+        <h3>Available capability types:</h3>
+        {%- table mappings="mappings.json" %}{% query_capability_str %}{% endtable %}
+        {%- destroy %}
+
+    </body>
+
+{% style %}
+{% script %}
+{% endhtml %}
+
+END_TEMPLATE
+
+END_CELL
+
+# ------------------------------------------------------------------------------

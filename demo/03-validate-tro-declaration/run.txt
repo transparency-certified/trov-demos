@@ -5,7 +5,7 @@ rdfvr -f data/tro1.jsonld -s data/tro.schema.ttl -m data/mappings.json
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 Path of the RDF graph to be validated: data/tro1.jsonld
 Path of the SHACL file: data/tro.schema.ttl
-Datetime: 2024-05-27 23:27:03.942522
+Datetime: 2025-06-18 01:39:17.697385
 
 ************************************************************
 * Suggested Node(s) to be Updated:                         *
@@ -31,7 +31,7 @@ rdfvr -f data/tro1.jsonld -s data/tro.schema.ttl -m data/mappings.json -o produc
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 Path of the RDF graph to be validated: data/tro1.jsonld
 Path of the SHACL file: data/tro.schema.ttl
-Datetime: 2024-05-27 23:27:05.316502
+Datetime: 2025-06-18 01:39:18.808215
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -42,7 +42,7 @@ rdfvr -f data/tro2.jsonld -s data/tro.schema.ttl -m data/mappings.json
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 Path of the RDF graph to be validated: data/tro2.jsonld
 Path of the SHACL file: data/tro.schema.ttl
-Datetime: 2024-05-27 23:27:06.821348
+Datetime: 2025-06-18 01:39:19.850633
 
 ************************************************************
 * Suggested Node(s) to be Updated:                         *
@@ -62,7 +62,7 @@ rdfvr -f data/tro2.jsonld -s data/tro.schema.ttl -m data/mappings.json -o produc
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 Path of the RDF graph to be validated: data/tro2.jsonld
 Path of the SHACL file: data/tro.schema.ttl
-Datetime: 2024-05-27 23:27:08.240316
+Datetime: 2025-06-18 01:39:20.858151
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -73,7 +73,7 @@ rdfvr -f data/tro3.jsonld -s data/tro.schema.ttl -m data/mappings.json
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 Path of the RDF graph to be validated: data/tro3.jsonld
 Path of the SHACL file: data/tro.schema.ttl
-Datetime: 2024-05-27 23:27:09.843938
+Datetime: 2025-06-18 01:39:21.992534
 
 ************************************************************
 * Suggested Node(s) to be Updated:                         *
@@ -117,7 +117,7 @@ rdfvr -f data/tro3.jsonld -s data/tro.schema.ttl -m data/mappings.json -o produc
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 Path of the RDF graph to be validated: data/tro3.jsonld
 Path of the SHACL file: data/tro.schema.ttl
-Datetime: 2024-05-27 23:27:11.298134
+Datetime: 2025-06-18 01:39:23.098117
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -128,7 +128,7 @@ rdfvr -f data/tro4.jsonld -s data/tro.schema.ttl -m data/mappings.json
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 Path of the RDF graph to be validated: data/tro4.jsonld
 Path of the SHACL file: data/tro.schema.ttl
-Datetime: 2024-05-27 23:27:12.657227
+Datetime: 2025-06-18 01:39:24.196944
 
 ************************************************************
 * Suggested Node(s) to be Updated: ['fp1']                 *
@@ -153,7 +153,7 @@ rdfvr -f data/tro4.jsonld -s data/tro.schema.ttl -m data/mappings.json -o produc
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 Path of the RDF graph to be validated: data/tro4.jsonld
 Path of the SHACL file: data/tro.schema.ttl
-Datetime: 2024-05-27 23:27:14.086240
+Datetime: 2025-06-18 01:39:25.208389
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -164,7 +164,7 @@ rdfvr -f data/tro5.jsonld -s data/tro.schema.ttl -m data/mappings.json
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 Path of the RDF graph to be validated: data/tro5.jsonld
 Path of the SHACL file: data/tro.schema.ttl
-Datetime: 2024-05-27 23:27:15.352024
+Datetime: 2025-06-18 01:39:26.250165
 
 ************************************************************
 * Suggested Node(s) to be Updated: ['fp1']                 *
@@ -189,7 +189,7 @@ rdfvr -f data/tro5.jsonld -s data/tro.schema.ttl -m data/mappings.json -o produc
 ----------------------------------------------------------- cell outputs -----------------------------------------------------------
 Path of the RDF graph to be validated: data/tro5.jsonld
 Path of the SHACL file: data/tro.schema.ttl
-Datetime: 2024-05-27 23:27:16.582647
+Datetime: 2025-06-18 01:39:27.284600
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 

@@ -1,0 +1,87 @@
+{
+    "@context": [{
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "trov": "https://w3id.org/trace/2023/05/trov#"
+    }],
+
+    "@graph": [
+        {
+            "@id": "trov:CanEnsureInputDataIncludedInTROPackage",
+            "@type": "rdfs:Class",
+            "rdfs:subClassOf": { "@id": "trov:TRSCapability" },
+            "rdfs:label": "Capability of Ensuring Input Data Included in TRO package",
+            "rdfs:comment": "TRS can ensure that all input data included in TRO package"            
+        },
+        {
+            "@id": "trov:CanRequireInputDataExistsBeforeRun",
+            "@type": "rdfs:Class",
+            "rdfs:subClassOf": { "@id": "trov:TRSCapability" },
+            "rdfs:label": "Capability of Requiring Input Data Exists Before Run",
+            "rdfs:comment": "TRS can require that all input data exists prior to run"            
+        },
+        {
+            "@id": "trov:CanRequireInputDataLocalBeforeRun",
+            "@type": "rdfs:Class",
+            "rdfs:subClassOf": { "@id": "trov:TRSCapability" },
+            "rdfs:label": "Capability of Requiring Input Data Local Before Run",
+            "rdfs:comment": "TRS can require that all input data is stored locally prior to run"       
+        },
+        {
+            "@id": "trov:CanEnsureInputDataPersistsAfterRun",
+            "@type": "rdfs:Class",
+            "rdfs:subClassOf": { "@id": "trov:TRSCapability" },
+            "rdfs:label": "Capability of Ensuring Input Data Persists After Run",
+            "rdfs:comment": "TRS can ensure that all input data persists after run"       
+        },
+        {
+            "@id": "trov:CanEnsureOutputDataIncludedInTROPackage",
+            "@type": "rdfs:Class",
+            "rdfs:subClassOf": { "@id": "trov:TRSCapability" },
+            "rdfs:label": "Capability of Ensuring Output Data Included in TRO Package",
+            "rdfs:comment": "TRS can ensure that all output data included in TRO package"       
+        },
+        {
+            "@id": "trov:CanEnsureCodeIncludedInTROPackage",
+            "@type": "rdfs:Class",
+            "rdfs:subClassOf": { "@id": "trov:TRSCapability" },
+            "rdfs:label": "Capability of Ensuring Code Included in TRO Package",
+            "rdfs:comment": "TRS can ensure that all custom code included in TRO package"       
+        },
+        {
+            "@id": "trov:CanRecordSoftwareEnvironment",
+            "@type": "rdfs:Class",
+            "rdfs:subClassOf": { "@id": "trov:TRSCapability" },
+            "rdfs:label": "Capability of Recording Software Environment",
+            "rdfs:comment": "TRS can record a full description of software environment"       
+        },
+        {
+            "@id": "trov:CanDetectInternetAccess",
+            "@type": "rdfs:Class",
+            "rdfs:subClassOf": { "@id": "trov:TRSCapability" },
+            "rdfs:label": "Capability of Detecting Internet Access",
+            "rdfs:comment": "TRS can detect Internet access"
+        },
+        {
+            "@id": "trov:CanEnforceInternetIsolation",
+            "@type": "rdfs:Class",
+            "rdfs:subClassOf": { "@id": "trov:TRSCapability" },
+            "rdfs:label": "Capability of Enforcing Internet Isolation",
+            "rdfs:comment": "TRS can enforce Internet isolation"
+        },
+        {
+            "@id": "trov:CanPreventUserInteractionDuringRun",
+            "@type": "rdfs:Class",
+            "rdfs:subClassOf": { "@id": "trov:TRSCapability" },
+            "rdfs:label": "Capability of Preventing User Interaction During Run",
+            "rdfs:comment": "TRS can prevent user interaction during run"
+        },
+        {
+            "@id": "trov:CanEnforceCapabilitiesTechnically",
+            "@type": "rdfs:Class",
+            "rdfs:subClassOf": { "@id": "trov:TRSCapability" },
+            "rdfs:label": "Enforcing Capabilities Technically",
+            "rdfs:comment": "TRS can enforce all of its capabilities technically"
+        }
+    ]
+}

@@ -85,16 +85,29 @@
 
 {% template query_trs_capability_str %}
     {%- query datastore="rdflib", isfilepath=False as query_trs_capability %}
-        SELECT DISTINCT (STR(?capability) AS ?id) ?name ?description
+        SELECT DISTINCT (STR(?capability) AS ?id) ?type ?description
         WHERE {
             ?trs        rdf:type    trov:TransparentResearchSystem .
             ?trs        trov:hasCapability ?capability .
-            ?capability rdfs:label  ?name .
+            ?capability rdf:type  ?type .
             ?capability rdfs:comment    ?description .
         }
         ORDER BY ?trs ?capability
     {% endquery %}
-    {{ query_trs_capability | df2json }}
+    {{ query_trs_capability.rename(columns={"id": "Capability ID", "type": "Capability Type", "description": "Description"}) | df2json }}
+{% endtemplate %}
+
+{% template query_capability_str %}
+    {%- query datastore="rdflib", isfilepath=False as query_capability %}
+        SELECT DISTINCT ?capability ?description
+        WHERE {
+            ?capability        rdf:type        rdfs:Class ;
+                        rdfs:subClassOf trov:TRSCapability .
+            ?capability rdfs:comment    ?description .
+        }
+        ORDER BY ?capability
+    {% endquery %}
+    {{ query_capability.rename(columns={"capability": "Capability Type", "description": "Description"}) | df2json }}
 {% endtemplate %}
 
 {% template query_trp_str %}
