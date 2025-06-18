@@ -139,7 +139,6 @@ geist report --outputroot products << END_TEMPLATE
     </body>
 
 {% style %}
-{% script %}
 {% endhtml %}
 
 END_TEMPLATE
