@@ -461,8 +461,8 @@ END_TEMPLATE
         <table>
             <tr><th>Capability ID</th><th>Capability Type</th><th>Description</th></tr>
         
-			<tr><td>trs/capability/1</td><td>&lttrov:CanRecordInternetAccess&gt</td><td>TRS can record internet access</td>
-			<tr><td>trs/capability/2</td><td>&lttrov:CanProvideInternetIsolation&gt</td><td>TRS can provide Internet isolation</td>
+			<tr><td>trs/capability/1</td><td>trov:CanRecordInternetAccess</td><td>TRS can record internet access</td>
+			<tr><td>trs/capability/2</td><td>trov:CanProvideInternetIsolation</td><td>TRS can provide Internet isolation</td>
         </table>
             </div>
 
@@ -699,7 +699,6 @@ geist report --outputroot products << END_TEMPLATE
     </body>
 
 {% style %}
-{% script %}
 {% endhtml %}
 
 END_TEMPLATE
@@ -726,24 +725,24 @@ END_TEMPLATE
         <table>
             <tr><th>Capability ID</th><th>Capability Type</th><th>Description</th></tr>
         
-			<tr><td>trs/capability/1</td><td>&lttrov:CanDetectInternetAccess&gt</td><td>TRS can detect Internet access</td>
-			<tr><td>trs/capability/2</td><td>&lttrov:CanEnforceInternetIsolation&gt</td><td>TRS can enforce Internet isolation</td>
+			<tr><td>trs/capability/1</td><td>trov:CanDetectInternetAccess</td><td>TRS can detect Internet access</td>
+			<tr><td>trs/capability/2</td><td>trov:CanEnforceInternetIsolation</td><td>TRS can enforce Internet isolation</td>
         </table>
             <h3>Available capability types:</h3>
         <table>
             <tr><th>Capability Type</th><th>Description</th></tr>
         
-			<tr><td>&lttrov:CanDetectInternetAccess&gt</td><td>TRS can detect Internet access</td>
-			<tr><td>&lttrov:CanEnforceCapabilitiesTechnically&gt</td><td>TRS can enforce all of its capabilities technically</td>
-			<tr><td>&lttrov:CanEnforceInternetIsolation&gt</td><td>TRS can enforce Internet isolation</td>
-			<tr><td>&lttrov:CanEnsureCodeIncludedInTROPackage&gt</td><td>TRS can ensure that all custom code included in TRO package</td>
-			<tr><td>&lttrov:CanEnsureInputDataIncludedInTROPackage&gt</td><td>TRS can ensure that all input data included in TRO package</td>
-			<tr><td>&lttrov:CanEnsureInputDataPersistsAfterRun&gt</td><td>TRS can ensure that all input data persists after run</td>
-			<tr><td>&lttrov:CanEnsureOutputDataIncludedInTROPackage&gt</td><td>TRS can ensure that all output data included in TRO package</td>
-			<tr><td>&lttrov:CanPreventUserInteractionDuringRun&gt</td><td>TRS can prevent user interaction during run</td>
-			<tr><td>&lttrov:CanRecordSoftwareEnvironment&gt</td><td>TRS can record a full description of software environment</td>
-			<tr><td>&lttrov:CanRequireInputDataExistsBeforeRun&gt</td><td>TRS can require that all input data exists prior to run</td>
-			<tr><td>&lttrov:CanRequireInputDataLocalBeforeRun&gt</td><td>TRS can require that all input data is stored locally prior to run</td>
+			<tr><td>trov:CanDetectInternetAccess</td><td>TRS can detect Internet access</td>
+			<tr><td>trov:CanEnforceCapabilitiesTechnically</td><td>TRS can enforce all of its capabilities technically</td>
+			<tr><td>trov:CanEnforceInternetIsolation</td><td>TRS can enforce Internet isolation</td>
+			<tr><td>trov:CanEnsureCodeIncludedInTROPackage</td><td>TRS can ensure that all custom code included in TRO package</td>
+			<tr><td>trov:CanEnsureInputDataIncludedInTROPackage</td><td>TRS can ensure that all input data included in TRO package</td>
+			<tr><td>trov:CanEnsureInputDataPersistsAfterRun</td><td>TRS can ensure that all input data persists after run</td>
+			<tr><td>trov:CanEnsureOutputDataIncludedInTROPackage</td><td>TRS can ensure that all output data included in TRO package</td>
+			<tr><td>trov:CanPreventUserInteractionDuringRun</td><td>TRS can prevent user interaction during run</td>
+			<tr><td>trov:CanRecordSoftwareEnvironment</td><td>TRS can record a full description of software environment</td>
+			<tr><td>trov:CanRequireInputDataExistsBeforeRun</td><td>TRS can require that all input data exists prior to run</td>
+			<tr><td>trov:CanRequireInputDataLocalBeforeRun</td><td>TRS can require that all input data is stored locally prior to run</td>
         </table>
     
     </body>
@@ -829,34 +828,6 @@ END_TEMPLATE
         background-color: #F8F9FA;
         }
     </style>
-    <script>
-        const buttons = document.querySelectorAll(".button");
-        const contents = document.querySelectorAll(".content");
-        buttons.forEach((button, index) => {
-            button.addEventListener("click", function() {
-                if (contents[index].style.display === "none") {
-                    contents[index].style.display = "block";
-                } else {
-                    contents[index].style.display = "none";
-                }
-            });
-        });
-
-        // Show or Hide IDs
-        const ids = document.querySelectorAll(".id_col");
-        const button_id = document.getElementById("ID_Button");
-        button_id.addEventListener("click", function() {
-            if (ids[0].style.display === "none") {
-                ids.forEach((id) => {
-                    id.style.display = "block";
-                });
-            } else {
-                ids.forEach((id) => {
-                    id.style.display = "none";
-                });
-            }
-        });
-    </script>
 </html>
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
