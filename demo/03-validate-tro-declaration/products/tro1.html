@@ -243,7 +243,16 @@ function highlightFilter(filter) {
 
              
         </style>
-    </head>
+    <style>html, body { height: 100%; margin: 0; padding: 0; }</style>
+<script>
+function resizeNetwork() {
+    var container = document.getElementById('mynetwork');
+    if (container) { container.style.height = window.innerHeight + 'px'; }
+}
+window.addEventListener('load', resizeNetwork);
+window.addEventListener('resize', resizeNetwork);
+</script>
+</head>
 
 
     <body>

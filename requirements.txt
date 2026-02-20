@@ -4,7 +4,7 @@ rdflib
 owlrl
 pyshacl
 pygraphviz
-rdfvr==0.3.3
+rdfvr==0.3.5
 jinja2
 jinja2_simple_tags
 tabulate
